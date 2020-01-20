@@ -49,7 +49,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endif
 #endif
 
-#if (AM_VERSION != 5)
+#if 0
 #include <linux/platform_data/sgx-omap.h>
 #endif
 
@@ -265,7 +265,7 @@ exit:
 DRI_DRM_STATIC void
 PVRSRVDrmUnload(struct drm_device *dev)
 {
-#if (AM_VERSION != 5)
+#if 0
 	int ret;
 	struct device *pDev = dev->dev;
 	struct platform_device *pDevice	= to_platform_device(pDev);
@@ -280,7 +280,7 @@ PVRSRVDrmUnload(struct drm_device *dev)
 
 	PVRCore_Cleanup();
 
-#if (AM_VERSION != 5)
+#if 0
 	if (pdata && pdata->assert_reset) {
 		ret = pdata->assert_reset(pDevice, pdata->reset_name);
 		if (ret) {
@@ -674,13 +674,13 @@ PVRSRVDrmProbe(struct platform_device *pDevice)
 	int ret;
 	struct device *dev = &pDevice->dev;
 	struct drm_device *drm_dev;
-#if (AM_VERSION != 5)
+#if 0
 	struct gfx_sgx_platform_data *pdata = dev->platform_data;
 #endif
 
 	PVR_TRACE(("PVRSRVDrmProbe"));
 
-#if (AM_VERSION != 5)
+#if 0
 	if (pdata && pdata->deassert_reset) {
 		ret = pdata->deassert_reset(pDevice, pdata->reset_name);
 		if (ret) {
