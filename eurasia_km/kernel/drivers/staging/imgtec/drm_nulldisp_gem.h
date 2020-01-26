@@ -90,7 +90,7 @@ void nulldisp_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
 int nulldisp_gem_prime_mmap(struct drm_gem_object *obj,
 				struct vm_area_struct *vma);
 
-struct reservation_object *nulldisp_gem_prime_res_obj(
+struct dma_resv *nulldisp_gem_prime_res_obj(
 				struct drm_gem_object *obj);
 
 int nulldisp_gem_dumb_create(struct drm_file *file,
@@ -103,7 +103,7 @@ int nulldisp_gem_dumb_map_offset(struct drm_file *file,
 					uint64_t *offset);
 
 /* internal interfaces */
-struct reservation_object *nulldisp_gem_get_resv(struct drm_gem_object *obj);
+struct dma_resv *nulldisp_gem_get_resv(struct drm_gem_object *obj);
 
 #endif	/* !defined(__DRM_NULLDISP_H__) */
 

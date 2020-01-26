@@ -62,8 +62,8 @@ struct nulldisp_gem_object {
 	struct page **pages;
 	dma_addr_t *addrs;
 
-	struct reservation_object _resv;
-	struct reservation_object *resv;
+	struct dma_resv _resv;
+	struct dma_resv *resv;
 };
 
 #define to_nulldisp_obj(obj) \
@@ -292,7 +292,7 @@ int nulldisp_gem_prime_mmap(struct drm_gem_object *obj,
 	return err;
 }
 
-struct reservation_object *
+struct dma_resv *
 nulldisp_gem_prime_res_obj(struct drm_gem_object *obj)
 {
 	struct nulldisp_gem_object *nulldisp_obj = to_nulldisp_obj(obj);
@@ -376,7 +376,7 @@ exit_unlock:
 	return err;
 }
 
-struct reservation_object *nulldisp_gem_get_resv(struct drm_gem_object *obj)
+struct dma_resv *nulldisp_gem_get_resv(struct drm_gem_object *obj)
 {
 	return (to_nulldisp_obj(obj)->resv);
 }

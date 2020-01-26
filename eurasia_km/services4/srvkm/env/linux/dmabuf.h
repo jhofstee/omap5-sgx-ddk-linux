@@ -50,12 +50,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "servicesext.h"
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0))
+#if KERNEL_VERSION(5, 4, 0) < LINUX_VERSION_CODE
 #include <linux/reservation.h>
+#else
+#include <linux/dma-resv.h>
+#endif
 #include "pvr_bridge.h"
 
 struct dmabuf_resvinfo
 {
-	struct reservation_object *resv;
+	struct dma_resv *resv;
 };
 
 static inline void *DmaBufGetReservationObject(IMG_HANDLE hSync)

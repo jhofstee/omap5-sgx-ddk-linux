@@ -520,8 +520,8 @@ static int drm_crtc_flip_schedule(struct drm_crtc *crtc,
 {
 	struct nulldisp_display_device *nulldisp_dev = crtc->dev->dev_private;
 	struct nulldisp_crtc *nulldisp_crtc = to_nulldisp_crtc(crtc);
-	struct reservation_object *resv = obj_to_resv(obj);
-	struct reservation_object *old_resv = obj_to_resv(old_obj);
+	struct dma_resv *resv = obj_to_resv(obj);
+	struct dma_resv *old_resv = obj_to_resv(old_obj);
 	struct nulldisp_flip_data *flip_data;
 	struct fence *fence;
 	int err;
