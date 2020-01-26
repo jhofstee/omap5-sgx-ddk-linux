@@ -734,7 +734,7 @@ PVRSRVDrmProbe(struct platform_device *pDevice)
 	ret = drm_dev_register(drm_dev, 0);
 	if (ret != 0) {
 		dev_err(dev, "Unable to register SGX DRM device\n");
-		drm_dev_unref(drm_dev);
+		drm_dev_put(drm_dev);
 	}
 
 	return ret;
@@ -752,7 +752,7 @@ PVRSRVDrmRemove(struct platform_device *pDevice)
 	PVR_TRACE(("PVRSRVDrmRemove"));
 
 	drm_dev_unregister(drm_dev);
-	drm_dev_unref(drm_dev);
+	drm_dev_put(drm_dev);
 
 	return 0;
 }
